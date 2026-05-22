@@ -18,10 +18,17 @@ h1{font-size:36px;line-height:1.05;margin:18px 0 8px;max-width:1050px}
 .hero p{max-width:920px;color:#d9dbea;font-size:15px;line-height:1.58}
 .logo{font-weight:900;letter-spacing:.07em} .logo span{color:var(--red)}
 .wrap{max-width:1200px;margin:0 auto;padding:22px}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 18px;position:sticky;top:0;z-index:50;background:rgba(247,247,248,.92);backdrop-filter:blur(10px);padding:10px 0}
-.tab{border:1px solid var(--line);background:#fff;color:var(--black);padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;font-size:13px;transition:.18s}
-.tab:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.06)}
-.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 22px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);padding:14px;border:1px solid var(--line);border-radius:22px;box-shadow:0 14px 34px rgba(17,18,24,.12)}
+.tabs-hint{flex:0 0 100%;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:900;color:var(--blue);margin:0 0 4px;padding:4px 2px 6px}
+.tabs-hint span{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:999px;background:var(--red);color:#fff;font-size:14px;box-shadow:0 6px 14px rgba(196,0,11,.25)}
+.tab{display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(45,53,130,.35);background:linear-gradient(180deg,#ffffff 0%,#f4f6ff 100%);color:var(--black);padding:11px 16px;border-radius:999px;cursor:pointer;font-weight:900;font-size:14px;transition:.18s;box-shadow:0 6px 16px rgba(45,53,130,.10);user-select:none}
+.tab:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(196,0,11,.12);flex:0 0 auto}
+.tab:after{content:"натисніть";font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#5e6270;background:#eef1fb;border-radius:999px;padding:3px 6px;margin-left:2px}
+.tab:hover{transform:translateY(-2px);border-color:var(--red);box-shadow:0 12px 24px rgba(196,0,11,.16)}
+.tab:focus-visible{outline:4px solid rgba(196,0,11,.25);outline-offset:3px}
+.tab.active{background:linear-gradient(135deg,var(--blue),#1b225e);color:#fff;border-color:#fff;box-shadow:0 12px 28px rgba(45,53,130,.30),inset 0 0 0 1px rgba(255,255,255,.20)}
+.tab.active:before{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.18)}
+.tab.active:after{content:"відкрито";background:rgba(255,255,255,.18);color:#fff}
 .section{display:none;animation:fade .22s ease-in} .section.active{display:block}
 @keyframes fade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
@@ -74,7 +81,7 @@ ul.clean{padding-left:18px;line-height:1.55}
 .modal img{max-width:92vw;max-height:86vh;border-radius:14px;background:#fff}
 .close{position:absolute;top:20px;right:20px;background:#fff;color:#000;border-radius:999px;border:0;width:42px;height:42px;font-size:22px;cursor:pointer}
 .footer{color:#777;font-size:12px;padding:30px 0}
-@media(max-width:900px){.kpi,.wide,.half,.third{grid-column:span 12}h1{font-size:28px}.metric-row{grid-template-columns:1fr}.value{text-align:left}.tabs{position:relative}}
+@media(max-width:900px){.kpi,.wide,.half,.third{grid-column:span 12}h1{font-size:28px}.metric-row{grid-template-columns:1fr}.value{text-align:left}.tabs{position:relative}.tab{font-size:13px;padding:10px 12px}.tab:after{display:none}.tabs-hint{font-size:12px}}
 @media print{.tabs,.btn,.gallery,.modal{display:none!important}.section{display:block!important}body{background:white}.card{box-shadow:none}}
 </style>
 </head>
@@ -85,7 +92,8 @@ ul.clean{padding-left:18px;line-height:1.55}
   <p>Інтерактивний звіт участі SPROF: видимість бренду, активності, медійні показники, аудиторія, бюджет, висновки та дії після події. Ключова рамка: витривалість професійної кухні як системи, що працює під реальним навантаженням.</p>
 </header>
 <main class="wrap">
-<nav class="tabs">
+<nav class="tabs" aria-label="Навігація по розділах звіту">
+  <div class="tabs-hint"><span>↓</span> Натискайте кнопки нижче, щоб перемикати розділи звіту</div>
   <button class="tab active" data-tab="overview">Огляд</button>
   <button class="tab" data-tab="media">Медіа</button>
   <button class="tab" data-tab="audience">Аудиторія</button>
